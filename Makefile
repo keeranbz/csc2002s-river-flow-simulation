@@ -10,7 +10,7 @@ compile:
 default: compile
 
 run: 
-	java bin/TerrainClassification
+	java -cp "bin/" Flow data/medsample_in.txt
 
 
 clean: 
