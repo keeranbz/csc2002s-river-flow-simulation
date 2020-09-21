@@ -96,7 +96,7 @@ public class Terrain {
 			
 			for(int y = 0; y < dimy; y++){
 				for(int x = 0; x < dimx; x++)	
-					height[x][y] = sc.nextFloat();
+					height[x][y] = Float.parseFloat(sc.next());
 				}
 				
 			sc.close(); 
