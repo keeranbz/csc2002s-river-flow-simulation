@@ -5,13 +5,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 public class Terrain {
 
-	float [][] height; // regular grid of height values
-	int dimx, dimy; // data dimensions
-	BufferedImage img; // greyscale image for displaying the terrain top-down
+	float [][] height;                  // regular grid of height values
+	int dimx, dimy;                     // data dimensions
+	BufferedImage img;                  // greyscale image for displaying the terrain top-down
 
-	ArrayList<Integer> permute;	// permuted list of integers in range [0, dimx*dimy)
+	ArrayList<Integer> permute;	      // permuted list of integers in range [0, dimx*dimy)
 	
 	// overall number of elements in the height grid
 	int dim(){
@@ -36,8 +37,8 @@ public class Terrain {
 	// convert linear position into 2D location in grid
 	void locate(int pos, int [] ind)
 	{
-		ind[0] = (int) pos / dimy; // x
-		ind[1] = pos % dimy; // y	
+		ind[0] = (int) pos / dimy;       // x
+		ind[1] = pos % dimy;             // y	
 	}
 	
 	// convert height values to greyscale colour and populate an image
