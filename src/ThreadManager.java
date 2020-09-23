@@ -10,8 +10,8 @@ public class ThreadManager extends java.lang.Thread {
     /**
      * Constructor.
      * 
-     * @param a   Lower bound of permuted array.
-     * @param b    Upper bound of permuted array.
+     * @param a       Lower bound of permuted array.
+     * @param b       Upper bound of permuted array.
      * @param terrain Terrain grid.
      * @param water   Water object.
      */
