@@ -71,14 +71,17 @@ public class Flow {
 		 */
 		JPanel t = new JPanel();
 		t.setLayout(new BoxLayout(t, BoxLayout.LINE_AXIS));
-		t.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+		t.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 		JLabel timerDisplay = new JLabel("Timer: " + startTime);
-		timer = new TimerDisplay(timerDisplay);
+		timer = new TimerDisplay(timerDisplay, fp);
+
+		Thread counter = new Thread(timer);
+		counter.start();
 
 		// Button Pane
 		JPanel b = new JPanel();
 		b.setLayout(new BoxLayout(b, BoxLayout.LINE_AXIS));
-		b.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+		b.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 
 		/*
 		 * Reset button that zeroes both the water depth across the entire landscape and
@@ -88,12 +91,10 @@ public class Flow {
 		resetButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				fp.stop();
+				fp.timeStep = 0;
 				fp.clear();
 				fp.repaint();
-				// add timer set it to zero
 				startTime = 0;
-				// set text to zero
-				timerDisplay.setText("Timer: " + startTime);
 			}
 		});
 
@@ -101,8 +102,7 @@ public class Flow {
 		JButton pauseButton = new JButton("Pause");
 		pauseButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				timer.stop = true; // stop counter thread
-				// startTime = tock(); // stop timer
+				startTime = tock(); // stop timer
 				fp.stop(); // stops simulation threads
 			}
 		});
@@ -114,7 +114,6 @@ public class Flow {
 		JButton playButton = new JButton("Play");
 		playButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
 				fp.play(); // runs simulation threads
 			}
 		});
@@ -123,7 +122,7 @@ public class Flow {
 		JButton endButton = new JButton("End");
 		endButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				timer.stop = true; // stop counter thread
+				timer.finished = true; // stop counter thread
 				fp.stop(); // stops simulation threads
 				frame.dispose();
 				System.exit(0);
@@ -195,7 +194,7 @@ public class Flow {
 	public static void main(String[] args) {
 		Terrain landdata = new Terrain();
 
-		// check that number of command line arguments is correct
+		/// check that number of command line arguments is correct
 
 		if (args.length != 1) {
 			System.out.println(

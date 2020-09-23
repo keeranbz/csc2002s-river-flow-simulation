@@ -2,25 +2,28 @@ import javax.swing.JLabel;
 import java.util.concurrent.atomic.*;
 
 /**
- * Update the timer display Controls display of each timestep
+ * Thread Updates the timer display for each timestep on the GUI
  **/
 public class TimerDisplay implements Runnable {
+    private FlowPanel fp;
     JLabel timer;
-    public static volatile boolean stop = false;
+    public static volatile boolean finished = false;
 
     /*
-     * Constructor Method Initializes timer
+     * Constructor Method Initializes timer display label
+     * 
+     * @param timeLabel display label for the timesteps on GUI
      */
-    public TimerDisplay(JLabel t) {
-        this.timer = t;
-        System.out.println("Good job");
-
+    public TimerDisplay(JLabel timeLabel, FlowPanel fp) {
+        this.timer = timeLabel;
+        this.fp = fp;
+        this.finished = false;
     }
 
     /* Thread updates the display of the timer */
     public void run() {
-        while (!stop) {
-            timer.setText("Timer: " + Flow.getTime());
+        while (!finished) {
+            timer.setText("Timestep: " + fp.getTimeStep());
         }
     }
 }

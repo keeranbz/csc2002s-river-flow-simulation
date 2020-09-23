@@ -6,6 +6,7 @@ public class FlowPanel extends JPanel implements Runnable {
 	public Terrain land;
 	public Water water;
 	public AtomicBoolean play;
+	public int timeStep = 0;
 
 	/* Default constructor */
 	FlowPanel(Terrain terrain) {
@@ -49,6 +50,10 @@ public class FlowPanel extends JPanel implements Runnable {
 		repaint();
 	}
 
+	public int getTimeStep() {
+		return timeStep;
+	}
+
 	public void play() {
 		this.play.set(true);
 	}
@@ -88,8 +93,7 @@ public class FlowPanel extends JPanel implements Runnable {
 					try {
 						threads[t].join();
 						repaint();
-						// increment timer
-
+						timeStep++; // increment timer
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
