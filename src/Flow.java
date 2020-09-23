@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import java.awt.BorderLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.concurrent.atomic.*;
 
 /**
  * View Main display window that shows the landscape as a greyscale image, with

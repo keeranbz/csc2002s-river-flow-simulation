@@ -78,9 +78,9 @@ public class FlowPanel extends JPanel implements Runnable {
 
 			if (this.play.get()) {
 				for (int i = 0; i < numThreads; i++) {
-					int start = (i * (this.land.dimx * this.land.dimy)) / numThreads;
-					int stop = ((i + 1) * (this.land.dimx * this.land.dimy)) / numThreads;
-					threads[i] = new ThreadManager(start, stop, this.land, this.water);
+					int a = (i * (this.land.dimx * this.land.dimy)) / numThreads;
+					int b = ((i + 1) * (this.land.dimx * this.land.dimy)) / numThreads;
+					threads[i] = new ThreadManager(a, b, this.land, this.water);
 					threads[i].start();
 				}
 
