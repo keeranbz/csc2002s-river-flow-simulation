@@ -1,5 +1,5 @@
 # River Flow Simulation
-In this assignment, a multithreaded Java program will be designed, ensuring both thread safety and sufficient concurrency for it to function well. 
+This assignment is a multithreaded Java program, designed to ensure both thread safety and sufficient concurrency for it to function well. 
 
 The task is to implement a multithreaded water flow simulator that shows how water on a terrain flows downhill, accumulating in basins and flowing off the edge of the terrain.
 
