@@ -197,15 +197,16 @@ public class Flow {
 		Terrain landdata = new Terrain();
 
 		// check that number of command line arguments is correct
-		/*
-		 * if(args.length != 1) { System.out.
-		 * println("Incorrect number of command line arguments. Should have form: java -jar flow.java intputfilename"
-		 * ); System.exit(0); }
-		 */
+
+		if (args.length != 1) {
+			System.out.println(
+					"Incorrect number of command line arguments. Should have form: java -jar flow.java intputfilename");
+			System.exit(0);
+		}
 
 		// landscape information from file supplied as argument
-		//
-		landdata.readData("./data/medsample_in.txt");
+
+		landdata.readData(args[0]);
 
 		Water water = new Water(landdata.getDimX(), landdata.getDimY(), landdata);
 
