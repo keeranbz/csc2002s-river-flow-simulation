@@ -225,6 +225,12 @@ public class Water {
         }
     }
 
+    /**
+     * Draws a block of water on specified cell.
+     * 
+     * @param x x-position of cell.
+     * @param y y-position of cell.
+     */
     public void plotWater(int x, int y) {
         int size = 4;
         for (int i = (x - size); i < (x + size); i++) {

@@ -16,5 +16,6 @@ run:
 clean: 
 	rm bin/*
 	rm -rf docs/*
+	
 
 	
